@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Jack Nicholson",
+    "nickname": "Nick",
+    "nationality": "Estadunidense",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Jack_Nicholson_2001.jpg/200px-Jack_Nicholson_2001.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Daniel Radcliffe",
+    "nickname": "Harry Potter",
+    "nationality": "Inglês",
+    "image": "https://poltronanerd.com.br/wp-content/uploads/2016/06/daniel-radcliffe-to-star-in-grand-theft-auto-movie-reports-94256_1.jpeg"
+  }
+]

@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.build.tailwind.css}">
+</head>
+<body>
+<div class="min-h-full">
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-16 w-16" th:src="@{/images/logo.png}" alt="Blockbuster">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a th:href="@{/}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
+                            <a th:href="@{/movies}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Filmes</a>
+                            <a th:href="@{/actors}" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                               aria-current="page">Atores</a>
+                            <a th:href="@{/news}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notícias</a>
+                            <a th:href="@{/movies/favorites}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Favoritos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white shadow">
+        <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Atores</h1>
+        </div>
+    </header>
+    <main>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="flex flex-col">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full text-left text-sm font-light">
+                                <thead class="border-b font-medium dark:border-neutral-500">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4">Imagem</th>
+                                    <th scope="col" class="px-6 py-4">Nome</th>
+                                    <th scope="col" class="px-6 py-4">Apelido</th>
+                                    <th scope="col" class="px-6 py-4">Nacionalidade</th>
+                                    <th scope="col" class="px-6 py-4">Ações</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="actor : ${actors}" class="border-b dark:border-neutral-500">
+                                    <td class="whitespace-nowrap px-6 py-4 "><img class="h-14 w-14"
+                                                                                  th:src="${actor.image}"></td>
+                                    <td class="whitespace-nowrap px-6 py-4" th:text="${actor.name}"></td>
+                                    <td class="whitespace-nowrap px-6 py-4" th:text="${actor.nickname}"></td>
+                                    <td class="whitespace-nowrap px-6 py-4" th:text="${actor.nationality}"></td>
+                                    <td class="whitespace-nowrap px-6 py-4">
+                                        <a class="cursor-pointer justify-center mt-4 w-34 inline-flex items-center rounded-md bg-indigo-600 px-1 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                           th:href="@{/actors/edit/{id}(id=${actor.id})}">Editar</a>
+                                        <a class="cursor-pointer justify-center mt-4 w-34 inline-flex items-center rounded-md bg-red-600 px-1 py-1 text-xs font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                           th:href="@{/actors/remove/{id}(id=${actor.id})}"
+                                           onclick="return confirm('Tem certeza que deseja excluir este ator?')">Excluir</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-end">
+                    <a th:href="@{/actors/add}"
+                       class="justify-center mt-4 w-34 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        Novo ator
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

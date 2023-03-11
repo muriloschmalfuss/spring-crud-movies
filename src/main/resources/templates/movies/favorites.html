@@ -1,0 +1,68 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.build.tailwind.css}">
+    <script type="text/javascript" th:src="@{/js/masonry.pkgd.min.js.js}"></script>
+</head>
+<body>
+<div class="min-h-full">
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-16 w-16" th:src="@{/images/logo.png}" alt="Blockbuster">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a th:href="@{/}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
+                            <a th:href="@{/movies}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Filmes</a>
+                            <a th:href="@{/actors}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Atores</a>
+                            <a th:href="@{/news}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notícias</a>
+                            <a th:href="@{/movies/favorites}" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                               aria-current="page">Favoritos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white shadow">
+        <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Be Kind Rewind</h1>
+        </div>
+    </header>
+    <main>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+                <div class="grid-item mb-2" th:each="movie : ${movies}">
+                    <a class="absolute cursor-pointer top-1 right-3" th:href="@{/movies/favorite/{id}(id=${movie.id})}">
+                        <img class="h-8"
+                             th:src="${movie.favorite} ? @{/images/bookmark-filled.png} : @{/images/bookmark.png}"
+                             alt="bookmark">
+                    </a>
+                    <img class="w-48 h-auto" th:src="${movie.image}">
+                    <div class="flex justify-between">
+                        <a class="cursor-pointer" th:href="@{/movies/like/{id}(id=${movie.id})}">
+                            <img class="h-8" th:src="${movie.favorite} ? @{/images/like.png} : @{/images/like.png}"
+                                 alt="like">
+                        </a>
+                        <a class="cursor-pointer" th:href="@{/movies/dislike/{id}(id=${movie.id})}">
+                            <img class="h-8"
+                                 th:src="${movie.favorite} ? @{/images/dislike.png} : @{/images/dislike.png}"
+                                 alt="dislike">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

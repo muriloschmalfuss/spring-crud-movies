@@ -1,0 +1,20 @@
+{
+  "name": "blockbuster",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:postcss": "postcss src/main/resources/static/css/style.tailwind.css -o target/classes/static/css/style.build.tailwind.css",
+    "watch:postcss": "postcss src/main/resources/static/css/style.tailwind.css -o target/classes/static/css/style.build.tailwind.css -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.2.7"
+  }
+}

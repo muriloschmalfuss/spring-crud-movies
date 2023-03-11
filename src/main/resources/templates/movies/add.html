@@ -1,0 +1,122 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.build.tailwind.css}">
+</head>
+<body>
+<div class="min-h-full">
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-16 w-16" th:src="@{/images/logo.png}" alt="Blockbuster">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a th:href="@{/}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
+                            <a th:href="@{/movies}" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                               aria-current="page">Filmes</a>
+                            <a th:href="@{/actors}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Atores</a>
+                            <a th:href="@{/news}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notícias</a>
+                            <a th:href="@{/movies/favorites}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Favoritos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white shadow">
+        <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Filmes - Adicionar</h1>
+        </div>
+    </header>
+    <main>
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="px-4 py-6 sm:px-6 lg:px-8 mx-auto w-full rounded bg-gray-200">
+
+                <div class="shadow">
+                    <form th:object="${movie}" method="post" th:action="@{/movies/create}">
+                        <div class="px-4 py-6 bg-white rounded-t">
+                            <div>
+                                <label for="title"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Título</label>
+                                <input type="text" name="title" id="title" th:field="*{title}" autocomplete="title"
+                                       class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+
+                            <div>
+                                <label for="gender"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Gênero</label>
+                                <input type="text" name="gender" id="gender" th:field="*{gender}" autocomplete="gender"
+                                       class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+
+                            <div>
+                                <label for="duration"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Duração</label>
+                                <input type="text" name="duration" id="duration" th:field="*{duration}"
+                                       autocomplete="duration"
+                                       class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+
+                            <div>
+                                <label for="synopsis"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Sinopse</label>
+                                <div class="mt-2">
+                        <textarea id="synopsis" name="synopsis" th:field="*{synopsis}" rows="3"
+                                  class="mt-1 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
+                                  placeholder="you@example.com"></textarea>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="imdb_url"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Imdb</label>
+                                <input type="text" name="imdb_url" id="imdb_url" th:field="*{imdb_url}"
+                                       autocomplete="imdb_url"
+                                       class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+
+                            <div class="col-span-3 sm:col-span-2">
+                                <label for="image"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Imagem</label>
+                                <div class="mt-2 flex rounded-md shadow-sm">
+                                    <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 px-3 text-gray-500 sm:text-sm">http://</span>
+                                    <input type="text" name="image" id="image" th:field="*{image}"
+                                           class="block w-full flex-1 rounded-none rounded-r-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                           placeholder="www.example.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="actors"
+                                       class="block text-sm font-medium leading-6 text-gray-900">Ator</label>
+                                <select multiple id="actors" name="actors" autocomplete="actors" th:field="*{actors}"
+                                        class="mt-2 block w-full rounded-md border-0 bg-white py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option th:each="actor : ${actors_list}" th:value="${actor.id}"
+                                            th:text="${actor.name}"></option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6 rounded-b">
+                            <button type="submit"
+                                    class="inline-flex justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                                Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
